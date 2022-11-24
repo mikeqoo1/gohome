@@ -60,18 +60,43 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(date.Text())
-	fmt.Println(time1.Text())
-	fmt.Println(time2.Text())
 
-	//打卡
-	URL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/site2/main/RunCard.aspx", concordID, concordPW)
-	wd.Get(URL)
-	btn, err := wd.FindElement(selenium.ByID, "btnSelf")
-	if err != nil {
-		panic(err)
+	dateStr, _ := date.Text()
+	fmt.Println(dateStr)
+	time1Str, _ := time1.Text()
+	fmt.Println(time1Str)
+	time2Str, _ := time2.Text()
+	fmt.Println(time2Str)
+
+	now := time.Now()
+	hour := now.Hour()
+	minute := now.Minute()
+
+	//早上忘了打卡 幫主人打卡
+	if time1Str == " " && hour == 8 && minute <= 10 {
+		fmt.Println("小精靈出現了")
+		URL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/site2/main/RunCard.aspx", concordID, concordPW)
+		wd.Get(URL)
+		btn, err := wd.FindElement(selenium.ByID, "btnSelf")
+		if err != nil {
+			panic(err)
+		}
+		if err := btn.Click(); err != nil {
+			panic(err)
+		}
 	}
-	if err := btn.Click(); err != nil {
-		panic(err)
+
+	//下班了 幫主人先打卡
+	if hour == 17 {
+		fmt.Println("小精靈出現了")
+		URL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/site2/main/RunCard.aspx", concordID, concordPW)
+		wd.Get(URL)
+		btn, err := wd.FindElement(selenium.ByID, "btnSelf")
+		if err != nil {
+			panic(err)
+		}
+		if err := btn.Click(); err != nil {
+			panic(err)
+		}
 	}
 }
