@@ -43,7 +43,7 @@ func main() {
 	}
 	defer wd.Quit()
 
-	homeURL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/Site2/MIS/Flow/DateTimeFlow.aspx", concordID, concordPW)
+	homeURL := fmt.Sprintf("https://%d:%s@intra網址/Site2/MIS/Flow/DateTimeFlow.aspx", concordID, concordPW)
 	wd.Get(homeURL)
 	time.Sleep(3 * time.Second)
 	// page, _ := wd.PageSource()
@@ -75,7 +75,7 @@ func main() {
 	//早上忘了打卡 幫主人打卡
 	if time1Str == " " && hour == 8 && minute <= 10 {
 		fmt.Println("小精靈出現了")
-		URL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/site2/main/RunCard.aspx", concordID, concordPW)
+		URL := fmt.Sprintf("https://%d:%s@intra網址/site2/main/RunCard.aspx", concordID, concordPW)
 		wd.Get(URL)
 		btn, err := wd.FindElement(selenium.ByID, "btnSelf")
 		if err != nil {
@@ -89,7 +89,7 @@ func main() {
 	//下班了 幫主人先打卡
 	if hour == 17 {
 		fmt.Println("小精靈出現了")
-		URL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/site2/main/RunCard.aspx", concordID, concordPW)
+		URL := fmt.Sprintf("https://%d:%s@intra網址/site2/main/RunCard.aspx", concordID, concordPW)
 		wd.Get(URL)
 		btn, err := wd.FindElement(selenium.ByID, "btnSelf")
 		if err != nil {
