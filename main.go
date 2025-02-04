@@ -51,7 +51,7 @@ func main() {
 	}
 	defer wd.Quit()
 
-	userURL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/Site2/main/EIP_User.aspx", concordID, concordPW)
+	userURL := fmt.Sprintf("https://%d:%s@iiiii.cccccccc.com.tw/Site2/main/EIP_User.aspx", concordID, concordPW)
 	wd.Get(userURL)
 	name, err := wd.FindElement(selenium.ByCSSSelector, "#Label_name") //使用者姓名
 	if err != nil {
@@ -61,7 +61,7 @@ func main() {
 	nameStr = nameStr[1:10]
 	fmt.Println(nameStr)
 
-	homeURL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/Site2/MIS/Flow/DateTimeFlow.aspx", concordID, concordPW)
+	homeURL := fmt.Sprintf("https://%d:%s@iiiii.cccccccc.com.tw/Site2/MIS/Flow/DateTimeFlow.aspx", concordID, concordPW)
 	wd.Get(homeURL)
 	time.Sleep(1 * time.Second)
 	// page, _ := wd.PageSource()
@@ -86,7 +86,7 @@ func main() {
 	time2Str, _ := time2.Text()
 	fmt.Println(time2Str)
 
-	hrURL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/Site2/mis/hr/OverTimeListNew.aspx", concordID, concordPW)
+	hrURL := fmt.Sprintf("https://%d:%s@iiiii.cccccccc.com.tw/Site2/mis/hr/OverTimeListNew.aspx", concordID, concordPW)
 	wd.Get(hrURL)
 	time.Sleep(1 * time.Second)
 	css := "#Calendar1 > tbody >"
@@ -165,7 +165,7 @@ func main() {
 	//早上忘了打卡 幫主人打卡
 	if workflag && time1Str == " " && hour == 8 && minute <= 10 {
 		fmt.Println("小精靈出現了")
-		URL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/site2/main/RunCard.aspx", concordID, concordPW)
+		URL := fmt.Sprintf("https://%d:%s@iiiii.cccccccc.com.tw/site2/main/RunCard.aspx", concordID, concordPW)
 		wd.Get(URL)
 		btn, err := wd.FindElement(selenium.ByID, "btnSelf")
 		if err != nil {
@@ -179,7 +179,7 @@ func main() {
 	//下班了 幫主人先打卡
 	if workflag && hour == 17 {
 		fmt.Println("小精靈出現了")
-		URL := fmt.Sprintf("https://%d:%s@intra.concords.com.tw/site2/main/RunCard.aspx", concordID, concordPW)
+		URL := fmt.Sprintf("https://%d:%s@iiiii.cccccccc.com.tw/site2/main/RunCard.aspx", concordID, concordPW)
 		wd.Get(URL)
 		btn, err := wd.FindElement(selenium.ByID, "btnSelf")
 		if err != nil {
